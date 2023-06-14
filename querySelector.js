@@ -5,5 +5,7 @@ const secondItem = document.querySelector("li:nth-child(2)");
 secondItem.style.backgroundColor = "green";
 
 const thirdItem = document.querySelector("li:nth-child(3)");
-console.log(thirdItem)
+// console.log(thirdItem)
 thirdItem.style.display="none";
+
+
