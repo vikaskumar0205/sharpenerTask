@@ -8,11 +8,17 @@ items[2].style.backgroundColor = "green";
 
 for(let i=0;i<items.length;i++) {
     items[i].style.fontWeight = "bold";
+    items[i].style.backgroundColor = "yellow"
 }
 
 // In the Item 5 doesn't grab the property of items 
 // bacause here we select the element by their class name 
 // but in the case of Item 5 there is no any class assigned
 // that's why it not grabing the property of items.
+
+// Using getElementsByTagName
+
+const li = document.getElementsByTagName("li");
+// console.log(li);
 
 
