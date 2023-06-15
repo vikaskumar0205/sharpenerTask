@@ -1,4 +1,4 @@
-
+const itemList = document.getElementById('items');
 // Delete Items
 
 itemList.addEventListener('click', (e)=>{
@@ -12,7 +12,7 @@ itemList.addEventListener('click', (e)=>{
 // select the submit button
 const form = document.getElementById('addForm');
 
-const itemList = document.getElementById('items');
+
 // console.log(ul);
 
 form.addEventListener("submit", (e)=>{
@@ -40,6 +40,29 @@ form.addEventListener("submit", (e)=>{
 });
 
 
+// filter Items
 
+const filter = document.getElementById('filter');
+// console.log(filter);
+
+// keyup event
+filter.addEventListener('keyup', e=>{
+    // console.log(e.target.value);
+    setTimeout(()=>{
+        const text = e.target.value.toLowerCase();
+        const items = itemList.getElementsByTagName('li');
+        Array.from(items).forEach(ele=>{
+            const itemsName = ele.firstChild.textContent;
+            let index = itemsName.toLowerCase().indexOf(text);
+            // console.log(index);
+            if(index !== -1) {
+                ele.style.display = 'block';
+            }
+            else {
+                ele.style.display = 'none';
+            }
+        })
+    }, 2000);
+});
 
 
