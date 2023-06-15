@@ -6,12 +6,12 @@
     
 }
 
-.list-item {
+/* .list-item {
     display: flex;
     justify-content: space-around;
-    align-items: center;
+    align-items: left;
     list-style: none;
     font-size: larger;
     font-weight: 700;
-}
+} */
 

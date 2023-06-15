@@ -1,65 +1,69 @@
 
 
 const submitBtn = document.getElementById('submit-button');
-// console.log(submitBtn)
-let i=0;
-submitBtn.addEventListener('click', e=>{
-    e.preventDefault();
-    const items = document.getElementById('items')
-    const inputItems = document.querySelectorAll('input[type="text"]')
-    
-    const obj = {};
-    inputItems.forEach(item=>{
+let i = 1;
 
-        // convert into object
-        obj[item.name] = item.value;
+submitBtn.addEventListener('click', handleFormSubmit);
 
-        // adding the datas in localStorage
-        // localStorage.setItem(item.name, item.value);
+function handleFormSubmit(e) {
+  e.preventDefault();
+  
+  const inputItems = document.querySelectorAll('input[type="text"]');
+  const obj = {};
 
+  inputItems.forEach(({ name, value }) => {
+    obj[name] = value;
+  });
+
+  const newObj = `obj${i}`;
+  localStorage.setItem(newObj, JSON.stringify(obj));
+
+  const getItemEle = JSON.parse(localStorage.getItem(newObj));
+
+  createListItem(getItemEle);
+
+  i++;
+}
+
+function createListItem(item) {
+  const div = document.querySelector('.body');
+  const ul = document.createElement('ul');
+  ul.className = 'list-item';
+  const li = document.createElement('li');
+  li.textContent = `${item.name} - ${item.email} - ${item.phone}  `;
+
+  const delButton = document.createElement('input');
+  delButton.type = 'submit';
+  delButton.value = 'delete';
+  delButton.className = 'btn btn-dark p-1 delete';
+
+  delButton.addEventListener('click', handleDeleteButtonClick);
+
+  li.appendChild(delButton);
+  ul.appendChild(li);
+  div.appendChild(ul);
+}
+
+function handleDeleteButtonClick(e) {
+    const listItem = e.target.parentElement;
+    listItem.remove();
+  
+    const itemText = listItem.textContent.trim();
+    const [name, email, phone] = itemText.split(' - ');
+  
+    const storedItems = Object.keys(localStorage);
+  
+    storedItems.forEach((key) => {
+      const storedItem = JSON.parse(localStorage.getItem(key));
+      if (
+        storedItem.name === name &&
+        storedItem.email === email &&
+        storedItem.phone === phone
+      ) {
+        localStorage.removeItem(key);
+      }
     });
-    
-    // console.log(JSON.stringify(obj));
-    const strToJson = JSON.stringify(obj);
-    const newObj = `obj${i}`;
-    localStorage.setItem(newObj, strToJson);
-
-    const getItemEle = JSON.parse(localStorage.getItem(newObj));
-
-    
-    console.log(getItemEle);
-    console.log(getItemEle.name);
-    // selecting a div for the inserting a ul list
-    const div = document.querySelector(".body");
-
-    
-
-    if(i==0) {
-        const ul = document.createElement('ul');
-        ul.className = "list-item";
-        const li1 = document.createElement('li');
-        li1.appendChild(document.createTextNode("Name"));
-        const li2 = document.createElement('li');
-        li2.appendChild(document.createTextNode('Email'));
-        ul.appendChild(li1);
-        ul.appendChild(li2);
-        div.appendChild(ul);
-        i++;
-    }
-    
-    const ul = document.createElement('ul');
-    ul.className = "list-item";
-    const li1 = document.createElement('li');
-    li1.appendChild(document.createTextNode(getItemEle.name));
-    const li2 = document.createElement('li');
-    li2.appendChild(document.createTextNode(getItemEle.email));
-    ul.appendChild(li1);
-    ul.appendChild(li2);
-    // console.log(ul);
-    div.appendChild(ul);
-
-    i++;
-
-});
+  }
+  
 
 
