@@ -3,4 +3,15 @@
     width: 550px;
     margin-top:3rem;
     background-color: rgb(152, 154, 155);
+    
 }
+
+.list-item {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    list-style: none;
+    font-size: larger;
+    font-weight: 700;
+}
+
