@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="stylesheet"
+      href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css"
+      integrity="sha384-/Y6pD6FV/Vv2HJnA6t+vslU6fwYXjCFtcEpHbNJ0lyAFsXTsjBbfaDjzALeQsN6M"
+      crossorigin="anonymous"
+    />
+    <title>Expance Tracker App</title>
+  </head>
+  <body>
+    <form action="#" id="form" class="container w-50 mt-5 align-self-center bg-secondary">
+        <h2>Add Your Expanditure</h2>
+      <label for="expance">Expance:</label>
+      <input
+        type="text"
+        name="expance"
+        id="expance"
+        class="form-control"
+        placeholder="add your expances..."
+      />
+      <br />
+      <label for="description">Description:</label>
+      <input
+        type="text"
+        name="description"
+        id="description"
+        class="form-control"
+        placeholder="add your descriptions..."
+      />
+      <br />
+      <label for="category">Category:</label>
+      <select name="category" id="category" class="form-control">
+        <option value="no category" selected>select category</option>
+        <option value="movies">movies</option>
+        <option value="food">food</option>
+        <option value="eletricity">electricity</option>
+        <option value="fuel">fuel</option>
+        <option value="travelling">travelling</option>
+      </select>
+      <br />
+
+      <input
+        type="submit"
+        name="addExpance"
+        id="addExpance"
+        class="form-control btn btn-dark mb-3"
+      />
+    </form>
+  </body>
+</html>
