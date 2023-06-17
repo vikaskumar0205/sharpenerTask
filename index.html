@@ -9,18 +9,21 @@
       integrity="sha384-/Y6pD6FV/Vv2HJnA6t+vslU6fwYXjCFtcEpHbNJ0lyAFsXTsjBbfaDjzALeQsN6M"
       crossorigin="anonymous"
     />
+    <script src="script.js" defer></script>
     <title>Expance Tracker App</title>
   </head>
   <body>
     <form action="#" id="form" class="container w-50 mt-5 align-self-center bg-secondary">
-        <h2>Add Your Expanditure</h2>
+        <h2 class="container mb-3 ">Add Your Expanditure</h2>
       <label for="expance">Expance:</label>
       <input
-        type="text"
+        type="number"
+        min="1" step="1"
         name="expance"
         id="expance"
-        class="form-control"
+        class="form-control item-list"
         placeholder="add your expances..."
+        required
       />
       <br />
       <label for="description">Description:</label>
@@ -28,12 +31,13 @@
         type="text"
         name="description"
         id="description"
-        class="form-control"
+        class="form-control item-list"
         placeholder="add your descriptions..."
+        required
       />
       <br />
       <label for="category">Category:</label>
-      <select name="category" id="category" class="form-control">
+      <select name="category" id="category" class="form-control item-list">
         <option value="no category" selected>select category</option>
         <option value="movies">movies</option>
         <option value="food">food</option>
@@ -47,7 +51,8 @@
         type="submit"
         name="addExpance"
         id="addExpance"
-        class="form-control btn btn-dark mb-3"
+        value="add expances"
+        class="form-control btn btn-dark mb-3" 
       />
     </form>
   </body>
