@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="stylesheet"
+      href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css"
+      integrity="sha384-/Y6pD6FV/Vv2HJnA6t+vslU6fwYXjCFtcEpHbNJ0lyAFsXTsjBbfaDjzALeQsN6M"
+      crossorigin="anonymous"
+    />
+    <script src="script.js" defer></script>
+
+    <title>My-form</title>
+  </head>
+  <body>
+    <div class="body container col-md-7 bg-secondary">
+      <form action="#" class="container">
+        <h1 class="heading mb-4" id="heading">Add User</h1>
+        <div class="col align-self-center" id="items">
+          <label for="name">Name:</label>
+          <input
+            type="text"
+            name="name"
+            id="name"
+            placeholder="Enter your name"
+            class="form-control align-content-center"
+            required 
+            />
+
+          <br/>
+
+          <label for="email">Email:</label>
+          <input
+            type="text"
+            name="email"
+            id="email"
+            placeholder="Enter your Email"
+            class="form-control align-content-center"
+            required 
+            />
+          <br />
+          <label for="phone">Phone:</label>
+          <input
+            type="text"
+            name="phone"
+            id="phone"
+            placeholder="Enter your Phone number"
+            class="form-control align-content-center"
+            required 
+            />
+          <br />
+        </div>
+        <div class="col align-self-center">
+          <input
+            type="submit"
+            value="submit"
+            id="submit-button"
+            class="btn btn-dark active form-control font-weight-bold mb-4 mt-2"
+          />
+        </div>
+        <div class="list-group" id="div-items">
+            <ul id="sub-items" class="">
+
+            </ul>
+        </div>
+      </form>
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/1.4.0/axios.min.js" integrity="sha512-uMtXmF28A2Ab/JJO2t/vYhlaa/3ahUOgj1Zf27M5rOo8/+fcTUVH0/E0ll68njmjrLqOBjXM3V9NiPFL5ywWPQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+  </body>
+</html>
