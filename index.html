@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style.css" />
+    <script src="script.js" defer></script>
+    <title>Seller Admin Page buid</title>
+  </head>
+  <body>
+    <div class="main" id="main">
+      <form action="#" id="itemList" class="itemList">
+        <label for="price">Selling Price:</label>
+        <input
+          type="number"
+          name="selling_price"
+          id="price"
+          class="selling_price items"
+          min="1"
+          step="1"
+          placeholder="Enter price..." required
+        />
+
+        <label for="name">Product Name:</label>
+        <input
+          type="text"
+          name="product_name"
+          id="name"
+          class="product_name items"
+          placeholder="Enter product name..." required
+        />
+
+        <label for="category">Category:</label>
+        <select name="category" id="category" class="category items">
+          <option value="no item" selected>select a item</option>
+          <option value="foods">foods</option>
+          <option value="electronics">electronics</option>
+          <option value="skincare">skincare</option>
+        </select>
+
+        <button type="submit" id="submit-button">Add Product</button>
+      </form>
+
+      <div id="products" class="products">
+        <div class="electronics seller" id="electronics-items">
+          <h2>Electronic Items</h2>
+          <ul id="electronics"></ul>
+        </div>
+
+        <div class="foods seller" id="food-items">
+          <h2>Food items</h2>
+          <ul id="foods"></ul>
+        </div>
+
+        <div class="skin-cares seller" id="skin-care-items seller">
+          <h2>Skin Care Items</h2>
+          <ul id="skincare"></ul>
+        </div>
+      </div>
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/1.4.0/axios.min.js" integrity="sha512-uMtXmF28A2Ab/JJO2t/vYhlaa/3ahUOgj1Zf27M5rOo8/+fcTUVH0/E0ll68njmjrLqOBjXM3V9NiPFL5ywWPQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+  </body>
+</html>
