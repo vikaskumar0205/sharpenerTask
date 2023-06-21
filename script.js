@@ -1,4 +1,6 @@
 
+const mainUrl = "https://crudcrud.com/api/3e8a99c4372743338b189d90f74b09d2/dataCollection";
+
 const submitBtn = document.getElementById("submit-button");
 let i = 1;
 
@@ -22,7 +24,7 @@ function handleFormSubmit(e) {
   // NOW WE USE AXIOS.
   axios
     .post(
-      "https://crudcrud.com/api/7d62e9f4c0714adb9de766d9421df543/bookAppointApp02",
+      mainUrl,
       obj
     )
     .then((responce) => {
@@ -36,13 +38,17 @@ function handleFormSubmit(e) {
 }
 
 function createListItem(item) {
-//   const div = document.querySelector(".body");
-//   const ul = document.createElement("ul");
-//   ul.className = "list-item";
 
-  const listItems = document.getElementById('div-items');
+  const listItems = document.getElementById("div-items");
   const li = document.createElement("li");
-  li.className = "form-group mb-2"
+  li.className = "form-group mb-2";
+
+  // this is for the future excess the id of the list items.
+
+  // IMPORTANT!!!
+  li.setAttribute("id", item._id);
+
+
   li.textContent = `${item.name} - ${item.email} - ${item.phone}  `;
 
   const delButton = document.createElement("input");
@@ -50,7 +56,9 @@ function createListItem(item) {
   delButton.value = "delete";
   delButton.className = "btn btn-dark p-1 delete";
 
+
   delButton.addEventListener("click", handleDeleteButtonClick);
+
   // Edit button
   const editButton = document.createElement("input");
   editButton.type = "submit";
@@ -67,22 +75,38 @@ function createListItem(item) {
 // this is working fine!!.
 function handleDeleteButtonClick(e) {
   const listItem = e.target.parentElement;
-  listItem.remove();
+
+  // IMPORTANT!!!
+  const itemId = listItem.getAttribute("id");
+
+  // Delete item from the API using Axios as well as the browser.
+  axios
+    .delete(
+      `${mainUrl}/${itemId}`
+    )
+    .then(() => {
+      listItem.remove();
+    })
+    .catch((error) => {
+      console.log(error);
+    });
+
+
 
 }
 
-// saving the Not deleted part
+// saving details after refreshing the page.
 
 window.addEventListener('DOMContentLoaded', e=>{
-    axios('https://crudcrud.com/api/7d62e9f4c0714adb9de766d9421df543/bookAppointApp02')
+    axios.get(mainUrl)
         .then(response=>{
-            return response.data;
+          return response.data;
         })
         .then(datas=>{
-            datas.forEach(data=>{
-                createListItem(data);
-            })
+          datas.forEach(data=>{
+            createListItem(data);
+          })
         })
         .catch(err=>console.log(err));
-})
-
+        
+});
