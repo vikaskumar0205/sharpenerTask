@@ -1,5 +1,6 @@
-const url =
-//   "https://crudcrud.com/api/e3229bf0a34b414ea5e5d5e3e122e03e/adminpage";
+
+const url ="";
+  // "https://crudcrud.com/api/34e1d2a5a1af43b297d5e375ed98d068/adminpage2";
 
 document.getElementById("submit-button").addEventListener("click", (e) => {
   e.preventDefault();
@@ -27,8 +28,14 @@ document.getElementById("submit-button").addEventListener("click", (e) => {
           createItems(res.data);
         })
         .catch((err) => console.log(err));
+      
+      itemList.forEach((item, ind)=>{
+        if(ind===2) item.value = "select a item";
+        else item.value = "";
+      })
     }
   });
+
 });
 
 function createItems(item) {
@@ -49,7 +56,16 @@ function createItems(item) {
       deleteBtn.textContent = "Delete";
 
       deleteBtn.addEventListener("click", DeleteButtonclick);
+
+      // create edit button
+      const editBtn = document.createElement('button');
+      editBtn.type = "submit";
+      editBtn.textContent = "Edit"
+
+      editBtn.addEventListener('click', EditButtonClick);      
+
       li.appendChild(deleteBtn);
+      li.appendChild(editBtn);
       //   console.log(item);
       //   console.log(section.parentElement);
       ul.appendChild(li);
@@ -66,8 +82,31 @@ function DeleteButtonclick(e) {
   ulItem.remove();
   axios
     .delete(`${url}/${itemId}`)
-    .then(() => console.log())
     .catch((err) => console.log(err));
+}
+
+function EditButtonClick(e) {
+  e.preventDefault();
+  const liItem = e.target.parentElement;
+  const itemId = liItem.getAttribute('id');
+  const inputList = document.querySelectorAll('.items');
+
+  liItem.remove();
+  axios.get(`${url}/${itemId}`)
+    .then(response=>{
+      // console.log(response.data);
+      const data = response.data;
+      inputList[0].value = data.selling_price;
+      inputList[1].value = data.product_name;
+      inputList[2].value = data.category;
+      return data._id;
+    })
+    .then(id=>{
+      axios.delete(`${url}/${id}`)
+        .catch(err=>console.log(err));
+    })
+    .catch(err=>console.log(err));
+
 }
 
 // after refreshing the page save the all datas
